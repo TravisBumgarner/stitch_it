@@ -26,4 +26,8 @@ def success():
         f = request.files['file']  
         print(os.path.abspath(__file__))
         f.save(os.path.join('uploads', f.filename))
-        return render_template("success.html", name = f.filename)  
+        return render_template(
+            "success.html",
+            name = f.filename,
+            results = '<div style="width: 100px; height: 100px; background-color: red;"></div>'
+        )  
