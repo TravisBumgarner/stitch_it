@@ -3,8 +3,23 @@
 {% block content %}
 
 <body>
+    Stitch Size <button onclick="changeStitchSize(true)">+</button><button onclick="decreaseStitch">-</button>
     {{results|safe}}
 </body>
+<script>
 
+let stitchSize = {{stitch_size}}
+
+function changeStitchSize(increase){
+    const root = document.documentElement
+    
+    if(increase){
+
+    }
+    root.style.setProperty('--stitch_size',  stitchSize + "px");
+    stitchSize += 1
+}
+
+</script>
 </html>
 {% endblock %}

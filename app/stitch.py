@@ -67,18 +67,25 @@ def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
         </head>
         <body>
             <style>
+                :root {{
+                    --stitch_spacing: {stitch_spacing}px;
+                    --stitch_style: {stitch_style}%;
+                    --stitch_size: {stitch_size}px;
+                }}
                 body {{
-                    background-color: #ccc;
+                    background-color: var(--bg);
                 }}
                 .row {{
-                    display: flex;
+                    line-height: 0;
+                    white-space: nowrap;
+                    clear: both;
                 }}
                 .cell {{
-                    margin: {stitch_spacing}px;
-                    border-radius: {stitch_style}%;
-                    width:{stitch_size}px;
-                    display: inline-block;
-                    height:{stitch_size}px; 
+                    margin: var(--stitch_spacing);
+                    border-radius: var(--stitch_style);
+                    width: var(--stitch_size);
+                    float: left;
+                    height: var(--stitch_size); 
                 }}
             </style>
     '''

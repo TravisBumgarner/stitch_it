@@ -24,5 +24,8 @@ def success():
 
     return render_template(
         "success.html",
-        results = stitched_image
+        results = stitched_image,
+        stitch_size=form.stitch_size.data,
+        stitch_style=form.stitch_style.data,
+        stitch_spacing=form.stitch_spacing.data
     ) 
