@@ -4,6 +4,10 @@
 
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
 
+## Fonts
+
+https://fonts.google.com/?selection.family=Montserrat
+
 ## Flask File Uploads
 
 https://www.javatpoint.com/flask-file-uploading
@@ -15,5 +19,6 @@ https://stackoverflow.com/questions/43111029/how-to-find-the-average-colour-of-a
 
 ## Random Search Questions
 
-https://stackoverflow.com/questions/14761119/how-to-stop-divs-from-wrapping
-https://css-tricks.com/updating-a-css-variable-with-javascript/
+Wrapping divs issue: https://stackoverflow.com/questions/14761119/how-to-stop-divs-from-wrapping
+JavaScript and CSS Variables: https://css-tricks.com/updating-a-css-variable-with-javascript/
+CSS Reset - https://meyerweb.com/eric/tools/css/reset/

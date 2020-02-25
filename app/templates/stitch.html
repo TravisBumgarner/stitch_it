@@ -1,28 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Stitch!</h1>
-    <form action="/success" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.photo }}<br>
-            <br>
-            {{ form.stitch_size.label }}<br>
-            {{ form.stitch_size }}<br>
-            <br>
-            {{ form.sample_size.label }}<br>
-            {{ form.sample_size }}<br>
-            <br>
-            {% for subfield in form.stitch_style %}
-            <tr>
-                <td>{{ subfield }}</td>
-                <td>{{ subfield.label }}</td>
-            </tr>
-        {% endfor %}
-            <br>
-            {{ form.stitch_spacing.label }}<br>
-            {{ form.stitch_spacing }}<br>
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <div class="wrapper">
+        <h1>Stitch!</h1>
+        <form action="/success" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form_elements_wrapper">
+                <div>
+                    {{ form.photo.label }}
+                    {{ form.photo }}
+                </div>
+                <div>
+                    {{ form.stitch_size.label }}
+                    {{ form.stitch_size }}
+                </div>
+                <div>
+                    {{ form.sample_size.label }}
+                    {{ form.sample_size }}
+                </div>
+                <div>
+                    {{ form.stitch_spacing.label }}
+                    {{ form.stitch_spacing }}
+                </div>
+                <div>
+                    {{ form.stitch_style.label }}
+                    <ul>
+                        {% for subfield in form.stitch_style %}
+                            <li>{{ subfield }}
+                            {{ subfield.label }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div>{{ form.submit() }}</div>
+        </form>
+    </div>
 {% endblock %}

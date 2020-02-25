@@ -1,0 +1,10 @@
+- [x] Build flask server
+- [x] Setup HTML Templates
+- [x] Create form
+- [x] Write a script to process photos
+- [x] Integrate script into server
+- [ ] Pretty the UI
+- [ ] Form validation
+- [ ] Make it look like a stitching
+- [ ] Add some friendly size notes
+- [ ] Resize incoming photos (Optional: Add checkbox options to UI instead of random values)

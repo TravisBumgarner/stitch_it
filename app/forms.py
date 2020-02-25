@@ -4,13 +4,13 @@ from wtforms.validators import DataRequired
 
 
 class StitchForm(FlaskForm):
-    sample_size = IntegerField('Sample Size')
-    stitch_size = IntegerField('Stitch Size')
+    sample_size = IntegerField('Sample Size', default=10)
+    stitch_size = IntegerField('Stitch Size', default=10)
     stitch_style = RadioField('Stitch Style', choices=[
         (0,'Square'),
         (25,'Rounded Square'),
         (50,'Circle')
     ])
-    stitch_spacing = IntegerField('Stitch Spacing')
+    stitch_spacing = IntegerField('Stitch Spacing', default=2)
     photo = FileField('Photo', validators=[DataRequired()])
     submit = SubmitField('Stitch!')
