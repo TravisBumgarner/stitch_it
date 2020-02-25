@@ -4,8 +4,8 @@ import imutils
 import matplotlib.pyplot as plt
 from skimage import io 
 
-WIDTH = 500
-HEIGHT = 500
+OUTPUT_WIDTH = 500
+OUTPUT_HEIGHT = 500
 SLICE = 100 # px
 
 def kmeans_preview(img):
@@ -60,12 +60,17 @@ def kmeans_image(img):
 
 def main():
     output = []
-    # img = cv2.imread('sample.jpg', 0)
     img = io.imread('sample.jpg') #[:, :, :-1]
-    subsection = img[0:SLICE, 0:SLICE]
-    io.imsave('sample_section.jpg', subsection)
-    result = kmeans_image(subsection)
+    input_width, input_height, _ = img.shape
 
-    print(result)
+    output_width = round(input_width / SLICE)
+    output_height = round(input_height / SLICE)
 
+    output = np.zeros((output_width, output_height,3))
+
+    for i in range(0, output_width):
+        for j in range(0, output_height):
+            subsection = img[i*SLICE:i*SLICE+SLICE, j*SLICE:j*SLICE+SLICE]
+            output[i][j] = kmeans_image(subsection)
+    io.imsave("output.jpg", output)
 main()
