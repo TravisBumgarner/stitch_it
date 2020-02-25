@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="/success" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.photo}}<br>
+            <br>
+            {{ form.stitch_size.label }}<br>
+            {{ form.stitch_size }}<br>
+            <br>
+            {{ form.sample_size.label }}<br>
+            {{ form.sample_size }}<br>
+            <br>
+            {{ form.stitch_radius.label }}<br>
+            {{ form.stitch_radius }}<br>
+            <br>
+            {{ form.stitch_padding.label }}<br>
+            {{ form.stitch_padding }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
