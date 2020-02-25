@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, FileField, IntegerField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, FileField, IntegerField, RadioField
 from wtforms.validators import DataRequired
 
 
@@ -11,9 +11,13 @@ class LoginForm(FlaskForm):
 
 
 class StitchForm(FlaskForm):
-    stitch_size = IntegerField('Stitch Size')
     sample_size = IntegerField('Sample Size')
-    stitch_radius = IntegerField('Border Radius')
-    stitch_padding = IntegerField('Border Radius')
+    stitch_size = IntegerField('Stitch Size')
+    stitch_style = RadioField('Stitch Style', choices=[
+        (0,'Square'),
+        (25,'Rounded Square'),
+        (50,'Circle')
+    ])
+    stitch_spacing = IntegerField('Stitch Spacing')
     photo = FileField('Photo', validators=[DataRequired()])
     submit = SubmitField('Stitch!')

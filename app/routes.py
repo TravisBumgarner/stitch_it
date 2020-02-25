@@ -30,13 +30,15 @@ def stitch():
 @app.route('/success', methods = ['POST'])  
 def success():
     form = StitchForm()
+
     stitched_image = stitch_image(
         image=form.photo.data,
-        image_sample_side_length=form.sample_size.data,
-        thread_side_length=form.stitch_size.data
+        sample_size=form.sample_size.data,
+        stitch_size=form.stitch_size.data,
+        stitch_style=form.stitch_style.data,
+        stitch_spacing=form.stitch_spacing.data
     )
-    # print(os.path.abspath(__file__))
-    # f.save(os.path.join('uploads', f.filename))
+
     return render_template(
         "success.html",
         results = stitched_image

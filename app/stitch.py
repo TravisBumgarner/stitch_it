@@ -54,12 +54,12 @@ def kmeans_image(img):
     return np.uint8(palette[-1])
 
 
-def stitch_image(image, image_sample_side_length, thread_side_length):
+def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
     img = io.imread(image)
     input_width, input_height, _ = img.shape
 
-    horizontal_samples = round(input_width / image_sample_side_length)
-    vertical_samples = round(input_height / image_sample_side_length)
+    horizontal_samples = round(input_width / sample_size)
+    vertical_samples = round(input_height / sample_size)
 
     output_html = f'''
     <html>
@@ -74,11 +74,11 @@ def stitch_image(image, image_sample_side_length, thread_side_length):
                     display: flex;
                 }}
                 .cell {{
-                    margin: 1px;
-                    border-radius: 30%;
-                    width:{thread_side_length}px;
+                    margin: {stitch_spacing}px;
+                    border-radius: {stitch_style}%;
+                    width:{stitch_size}px;
                     display: inline-block;
-                    height:{thread_side_length}px; 
+                    height:{stitch_size}px; 
                 }}
             </style>
     '''
@@ -89,10 +89,10 @@ def stitch_image(image, image_sample_side_length, thread_side_length):
         output_html += '\t\t\t<div class="row">\n'
         
         for j in range(0, vertical_samples):
-            i_start = i*image_sample_side_length
-            i_end = i*image_sample_side_length+image_sample_side_length
-            j_start = j*image_sample_side_length
-            j_end = j*image_sample_side_length+image_sample_side_length
+            i_start = i*sample_size
+            i_end = i*sample_size+sample_size
+            j_start = j*sample_size
+            j_end = j*sample_size+sample_size
 
             r,g,b = kmeans_image(img[i_start:i_end, j_start:j_end])
             output_html += f'\t\t\t\t<div style="background-color: rgb({r},{g},{b});" class="cell"></div>\n'

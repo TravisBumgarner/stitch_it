@@ -13,11 +13,15 @@
             {{ form.sample_size.label }}<br>
             {{ form.sample_size }}<br>
             <br>
-            {{ form.stitch_radius.label }}<br>
-            {{ form.stitch_radius }}<br>
+            {% for subfield in form.stitch_style %}
+            <tr>
+                <td>{{ subfield }}</td>
+                <td>{{ subfield.label }}</td>
+            </tr>
+        {% endfor %}
             <br>
-            {{ form.stitch_padding.label }}<br>
-            {{ form.stitch_padding }}<br>
+            {{ form.stitch_spacing.label }}<br>
+            {{ form.stitch_spacing }}<br>
         </p>
         <p>{{ form.submit() }}</p>
     </form>
