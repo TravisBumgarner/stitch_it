@@ -4,11 +4,6 @@ import imutils
 import matplotlib.pyplot as plt
 from skimage import io 
 
-OUTPUT_WIDTH = 500
-OUTPUT_HEIGHT = 500
-OUTPUT_THREAD_SIZE = 10
-SLICE = 5 # px
-
 def kmeans_preview(img):
     pixels = np.float32(img.reshape(-1, 3))
 
@@ -55,56 +50,60 @@ def kmeans_image(img):
     _, counts = np.unique(labels, return_counts=True)
 
     dominant = palette[np.argmax(counts)]
-    # print(palette)
     # kmeans_preview(img)
     return np.uint8(palette[-1])
 
 
-HTML_HEADER = '''
-<html>
-    <head>
-    </head>
-    <body>
-        <style>
-            .wrapper {
-                
-            }
-            .row {
-                display: flex;
-            }
-            .cell {
-                margin: 1px;
-                border-radius: 30%;
-                width:5px;
-                display: inline-block;
-                height:5px; 
-            }
-        </style>
-'''
 
-def main():
-    output = []
-    img = io.imread('pika.png') #[:, :, :-1]
+def stitch_image(image, image_sample_side_length, thread_side_length):
+    img = io.imread(image)
     input_width, input_height, _ = img.shape
 
-    output_width = round(input_width / SLICE)
-    output_height = round(input_height / SLICE)
+    horizontal_samples = round(input_width / image_sample_side_length)
+    vertical_samples = round(input_height / image_sample_side_length)
 
-    output = np.zeros((output_width * OUTPUT_THREAD_SIZE, output_height * OUTPUT_THREAD_SIZE,3))
-    output_html = HTML_HEADER
+    output_html = f'''
+    <html>
+        <head>
+        </head>
+        <body>
+            <style>
+                body {{
+                    background-color: #ccc;
+                }}
+                .row {{
+                    display: flex;
+                }}
+                .cell {{
+                    margin: 1px;
+                    border-radius: 30%;
+                    width:{thread_side_length}px;
+                    display: inline-block;
+                    height:{thread_side_length}px; 
+                }}
+            </style>
+    '''
+
     output_html += '\t\t<div class="wrapper">\n'
-    for i in range(0, output_width):
+    
+    for i in range(0, horizontal_samples):
         output_html += '\t\t\t<div class="row">\n'
-        for j in range(0, output_height):
-            subsection = img[i*SLICE:i*SLICE+SLICE, j*SLICE:j*SLICE+SLICE]
-            suggested_color = kmeans_image(subsection)
-            html_color = f'{suggested_color[0]}, {suggested_color[1]}, {suggested_color[2]}'
-            output_html += f'\t\t\t\t<div style="background-color: rgb({html_color});" class="cell"></div>\n'
-            output[i*OUTPUT_THREAD_SIZE:i*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE,j*OUTPUT_THREAD_SIZE:j*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE] = suggested_color
+        
+        for j in range(0, vertical_samples):
+            i_start = i*image_sample_side_length
+            i_end = i*image_sample_side_length+image_sample_side_length
+            j_start = j*image_sample_side_length
+            j_end = j*image_sample_side_length+image_sample_side_length
+
+            r,g,b = kmeans_image(img[i_start:i_end, j_start:j_end])
+            output_html += f'\t\t\t\t<div style="background-color: rgb({r},{g},{b});" class="cell"></div>\n'
+        
         output_html += '\t\t\t</div>\n'
+    
     output_html += '\t\t</div>\n'
     output_html += '\t</body>\n</html>'
-    io.imsave("output8.png", np.uint8(output))
+
     with open('output.html', 'w') as file:
         file.write(output_html)
-main()
+
+main(image='woof.jpg', image_sample_side_length=2, thread_side_length=10)
