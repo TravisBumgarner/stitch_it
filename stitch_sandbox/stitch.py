@@ -6,7 +6,8 @@ from skimage import io
 
 OUTPUT_WIDTH = 500
 OUTPUT_HEIGHT = 500
-SLICE = 100 # px
+OUTPUT_THREAD_SIZE = 15
+SLICE = 5 # px
 
 def kmeans_preview(img):
     pixels = np.float32(img.reshape(-1, 3))
@@ -60,17 +61,17 @@ def kmeans_image(img):
 
 def main():
     output = []
-    img = io.imread('sample.jpg') #[:, :, :-1]
+    img = io.imread('pika.png') #[:, :, :-1]
     input_width, input_height, _ = img.shape
 
     output_width = round(input_width / SLICE)
     output_height = round(input_height / SLICE)
 
-    output = np.zeros((output_width, output_height,3))
+    output = np.zeros((output_width * OUTPUT_THREAD_SIZE, output_height * OUTPUT_THREAD_SIZE,3))
 
     for i in range(0, output_width):
         for j in range(0, output_height):
             subsection = img[i*SLICE:i*SLICE+SLICE, j*SLICE:j*SLICE+SLICE]
-            output[i][j] = kmeans_image(subsection)
-    io.imsave("output.jpg", output)
+            output[i*OUTPUT_THREAD_SIZE:i*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE,j*OUTPUT_THREAD_SIZE:j*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE] = kmeans_image(subsection)
+    io.imsave("output8.png", np.uint8(output))
 main()
