@@ -6,7 +6,7 @@ from skimage import io
 
 OUTPUT_WIDTH = 500
 OUTPUT_HEIGHT = 500
-OUTPUT_THREAD_SIZE = 15
+OUTPUT_THREAD_SIZE = 10
 SLICE = 5 # px
 
 def kmeans_preview(img):
@@ -59,6 +59,29 @@ def kmeans_image(img):
     # kmeans_preview(img)
     return np.uint8(palette[-1])
 
+
+HTML_HEADER = '''
+<html>
+    <head>
+    </head>
+    <body>
+        <style>
+            .wrapper {
+                
+            }
+            .row {
+                display: flex;
+            }
+            .cell {
+                margin: 1px;
+                border-radius: 30%;
+                width:5px;
+                display: inline-block;
+                height:5px; 
+            }
+        </style>
+'''
+
 def main():
     output = []
     img = io.imread('pika.png') #[:, :, :-1]
@@ -68,10 +91,20 @@ def main():
     output_height = round(input_height / SLICE)
 
     output = np.zeros((output_width * OUTPUT_THREAD_SIZE, output_height * OUTPUT_THREAD_SIZE,3))
-
+    output_html = HTML_HEADER
+    output_html += '\t\t<div class="wrapper">\n'
     for i in range(0, output_width):
+        output_html += '\t\t\t<div class="row">\n'
         for j in range(0, output_height):
             subsection = img[i*SLICE:i*SLICE+SLICE, j*SLICE:j*SLICE+SLICE]
-            output[i*OUTPUT_THREAD_SIZE:i*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE,j*OUTPUT_THREAD_SIZE:j*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE] = kmeans_image(subsection)
+            suggested_color = kmeans_image(subsection)
+            html_color = f'{suggested_color[0]}, {suggested_color[1]}, {suggested_color[2]}'
+            output_html += f'\t\t\t\t<div style="background-color: rgb({html_color});" class="cell"></div>\n'
+            output[i*OUTPUT_THREAD_SIZE:i*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE,j*OUTPUT_THREAD_SIZE:j*OUTPUT_THREAD_SIZE+OUTPUT_THREAD_SIZE] = suggested_color
+        output_html += '\t\t\t</div>\n'
+    output_html += '\t\t</div>\n'
+    output_html += '\t</body>\n</html>'
     io.imsave("output8.png", np.uint8(output))
+    with open('output.html', 'w') as file:
+        file.write(output_html)
 main()
