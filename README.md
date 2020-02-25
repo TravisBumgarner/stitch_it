@@ -22,3 +22,4 @@ https://stackoverflow.com/questions/43111029/how-to-find-the-average-colour-of-a
 Wrapping divs issue: https://stackoverflow.com/questions/14761119/how-to-stop-divs-from-wrapping
 JavaScript and CSS Variables: https://css-tricks.com/updating-a-css-variable-with-javascript/
 CSS Reset - https://meyerweb.com/eric/tools/css/reset/
+Copying to clipboard - https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f

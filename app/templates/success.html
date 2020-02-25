@@ -3,11 +3,36 @@
 {% block content %}
 
 <body>
-    Stitch Size <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button><button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
-    Stitch Spacing <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button><button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
-    Stitch Style <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">+</button><button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">-</button>
-    <button onclick="getCSS()">Get CSS</button><textarea rows="50" cols="50" id="outputcss"></textarea>
-    {{results|safe}}
+    <div id="results_form_elements_wrapper">
+        <div>
+           <p><a href="/">Try again</a></p>
+        </div>
+        <div>
+            <p>Stitch Size</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
+            </div>
+        </div>
+        <div>
+            <p>Stitch Spacing</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
+            </div>
+        </div>
+        <div>
+            <p>Stitch Style</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">+</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">-</button>
+            </div>
+        </div>
+        <button onclick="copyToClipboard()">Copy CSS to Clipboard</button>
+    </div>
+    <div id='css_image_wrapper'>
+        {{results|safe}}
+    </div>
 </body>
 <script>
 
@@ -37,11 +62,15 @@ function updateCSSVar({cssVar, incrementor}){
     root.style.setProperty(cssVar,  cssVal);
 }
 
-function getCSS(){
-    const wrapper = document.getElementById('wrapper')
-    const textbox = document.getElementById('outputcss')
-    textbox.value = wrapper.innerHTML
-}
+function copyToClipboard () {
+  const el = document.createElement('textarea')
+  const wrapper = document.getElementById('wrapper') 
+  el.value = wrapper.innerHTML
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+};
 
 </script>
 </html>

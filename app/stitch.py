@@ -90,7 +90,7 @@ def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
             </style>
     '''
 
-    output_html += '\t\t<div id="wrapper">\n'
+    output_html += '\t\t<div id="wrapper"><div id="image">\n'
     
     for i in range(0, horizontal_samples):
         output_html += '\t\t\t<div class="row">\n'
@@ -106,7 +106,7 @@ def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
         
         output_html += '\t\t\t</div>\n'
     
-    output_html += '\t\t</div>\n'
+    output_html += '\t\t</div></div>\n'
     output_html += '\t</body>\n</html>'
 
     return output_html

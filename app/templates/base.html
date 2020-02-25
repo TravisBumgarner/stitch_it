@@ -72,17 +72,34 @@
                 margin-bottom: 1em;
             }
 
-            .form_elements_wrapper div {
+            #submit_form_elements_wrapper > div {
                 width: 300px;
                 display: flex;
                 justify-content: space-between;
                 margin: 1em 0;
             }
+
+            #results_form_elements_wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 1em 0;
+            }
+
+            #css_image_wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 1em 0;
+            }
+
+            #results_form_elements_wrapper > div {
+                width: 200px;
+                display: flex;
+                justify-content: space-between;
+                margin: 0 1em;
+            }
         </style>
-        <div>
-            <a href="/">Home</a>
-        </div>
-        <hr>
         {% block content %}{% endblock %}
     </body>
 </html>
