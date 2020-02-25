@@ -6,17 +6,12 @@ from skimage import io
 
 WIDTH = 500
 HEIGHT = 500
-SLICE = 10 # px
+SLICE = 100 # px
 
-def main():
-    output = []
-    # img = cv2.imread('sample.jpg', 0)
-    img = io.imread('sample.jpg') #[:, :, :-1]
-    img = imutils.resize(img, height = WIDTH, width = HEIGHT)
-
+def kmeans_preview(img):
     pixels = np.float32(img.reshape(-1, 3))
 
-    n_colors = 15
+    n_colors = 3
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
     flags = cv2.KMEANS_RANDOM_CENTERS
 
@@ -47,8 +42,30 @@ def main():
     ax1.axis('off')
     plt.show(fig)
 
-    # for i in range(0, WIDTH, SLICE):
-    #     for j in range(0, HEIGHT, SLICE):
-    #         image[i:i+SLICE][j:j+SLICE]
+
+def kmeans_image(img):
+    pixels = np.float32(img.reshape(-1, 3))
+
+    n_colors = 3
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+    flags = cv2.KMEANS_RANDOM_CENTERS
+
+    _, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
+    _, counts = np.unique(labels, return_counts=True)
+
+    dominant = palette[np.argmax(counts)]
+    # print(palette)
+    # kmeans_preview(img)
+    return np.uint8(palette[-1])
+
+def main():
+    output = []
+    # img = cv2.imread('sample.jpg', 0)
+    img = io.imread('sample.jpg') #[:, :, :-1]
+    subsection = img[0:SLICE, 0:SLICE]
+    io.imsave('sample_section.jpg', subsection)
+    result = kmeans_image(subsection)
+
+    print(result)
 
 main()
