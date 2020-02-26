@@ -54,11 +54,14 @@ def kmeans_image(img):
     return np.uint8(palette[-1])
 
 
-def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
+def stitch_image(image, horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing):
     img = io.imread(image)
+    print('params', horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing)
+    img = imutils.resize(img, width=1000)
+    img = imutils.resize(img, height=1000) # imutils will not respect both width and height at same time
     input_width, input_height, _ = img.shape
 
-    horizontal_samples = round(input_width / sample_size)
+    sample_size = round(input_width / horizontal_samples_user_input)
     vertical_samples = round(input_height / sample_size)
 
     output_html = f'''
@@ -92,7 +95,7 @@ def stitch_image(image, sample_size, stitch_style, stitch_size, stitch_spacing):
 
     output_html += '\t\t<div id="wrapper"><div id="image">\n'
     
-    for i in range(0, horizontal_samples):
+    for i in range(0, horizontal_samples_user_input):
         output_html += '\t\t\t<div class="row">\n'
         
         for j in range(0, vertical_samples):

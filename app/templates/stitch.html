@@ -3,6 +3,10 @@
 {% block content %}
     <div class="wrapper">
         <h1>Stitch!</h1>
+        <h2>Notes:</h2>
+        <ul>
+            <li>Works best with images at least 1000px in length.</li>
+        </ul>
         <form action="/success" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div id="submit_form_elements_wrapper">
@@ -15,8 +19,8 @@
                     {{ form.stitch_size }}
                 </div>
                 <div>
-                    {{ form.sample_size.label }}
-                    {{ form.sample_size }}
+                    {{ form.horizontal_samples_user_input.label }}
+                    {{ form.horizontal_samples_user_input }}
                 </div>
                 <div>
                     {{ form.stitch_spacing.label }}

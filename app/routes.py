@@ -16,7 +16,7 @@ def success():
 
     stitched_image = stitch_image(
         image=form.photo.data,
-        sample_size=form.sample_size.data,
+        horizontal_samples_user_input=form.horizontal_samples_user_input.data,
         stitch_size=form.stitch_size.data,
         stitch_style=form.stitch_style.data,
         stitch_spacing=form.stitch_spacing.data

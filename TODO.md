@@ -4,10 +4,15 @@
 - [x] Write a script to process photos
 - [x] Integrate script into server
 - [x] Pretty the UI
+- [x] Fix UI bug with +- backwards
+- [x] Resize incoming photos (Optional: Add checkbox options to UI instead of random values)
+- [x] Add some friendly size notes
+- [ ] Fix stitch style buttons not working
 - [ ] Create copy to clipboard function
 - [ ] Form validation
 - [ ] Make it look like a stitching
-- [ ] Add some friendly size notes
-- [ ] Resize incoming photos (Optional: Add checkbox options to UI instead of random values)
 - [ ] Handle grayscale photos
 - [ ] Create links you can share
+- [ ] Protect against image attacks
+- [ ] Upload to GCP
+- [ ] Add some links on site (Created by ...)

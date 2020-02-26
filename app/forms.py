@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class StitchForm(FlaskForm):
-    sample_size = IntegerField('Sample Size', default=10)
+    horizontal_samples_user_input = IntegerField('Vertical Stitch Count', default=25)
     stitch_size = IntegerField('Stitch Size', default=10)
     stitch_style = RadioField('Stitch Style', choices=[
         (0,'Square'),
