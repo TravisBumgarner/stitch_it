@@ -10,7 +10,7 @@ class StitchForm(FlaskForm):
         (0,'Square'),
         (25,'Rounded Square'),
         (50,'Circle')
-    ])
+    ], default=25)
     stitch_spacing = IntegerField('Stitch Spacing', default=2)
     photo = FileField('Photo', validators=[DataRequired()])
     submit = SubmitField('Stitch!')

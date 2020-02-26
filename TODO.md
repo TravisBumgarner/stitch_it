@@ -9,6 +9,7 @@
 - [x] Add some friendly size notes
 - [ ] Fix stitch style buttons not working
 - [ ] Create copy to clipboard function
+- [ ] Read Logan's articles
 - [ ] Form validation
 - [ ] Make it look like a stitching
 - [ ] Handle grayscale photos
