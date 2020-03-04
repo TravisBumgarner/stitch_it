@@ -3,3 +3,4 @@ __pycache__/
 *.jpg
 *.png
 *.jpeg
+settings.json

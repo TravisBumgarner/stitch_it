@@ -8,6 +8,7 @@
 - [x] Resize incoming photos (Optional: Add checkbox options to UI instead of random values)
 - [x] Add some friendly size notes
 - [x] Form validation
+- [ ] Sort out all the awful CSS
 - [ ] Create copy to clipboard function
 - [ ] Read Logan's articles
 - [ ] Make it look like a stitching
