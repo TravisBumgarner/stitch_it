@@ -7,13 +7,15 @@
 - [x] Fix UI bug with +- backwards
 - [x] Resize incoming photos (Optional: Add checkbox options to UI instead of random values)
 - [x] Add some friendly size notes
-- [ ] Fix stitch style buttons not working
+- [x] Form validation
 - [ ] Create copy to clipboard function
 - [ ] Read Logan's articles
-- [ ] Form validation
 - [ ] Make it look like a stitching
-- [ ] Handle grayscale photos
 - [ ] Create links you can share
 - [ ] Protect against image attacks
 - [ ] Upload to GCP
 - [ ] Add some links on site (Created by ...)
+- [ ] Handle secret key
+- [ ] Fix bugs with uploading files from elsewhere
+- [ ] ~~Handle grayscale photos~~ (Non issue?)
+- [ ] ~~Fix stitch style buttons not working~~ (Non issue?)

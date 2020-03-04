@@ -72,6 +72,11 @@
                 margin-bottom: 1em;
             }
 
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 0.5em;
+            }
+
             #submit_form_elements_wrapper > div {
                 width: 300px;
                 display: flex;
@@ -98,6 +103,16 @@
                 display: flex;
                 justify-content: space-between;
                 margin: 0 1em;
+            }
+
+            .errors {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: red;
+                text-align: center;
+                padding: 1em;
             }
         </style>
         {% block content %}{% endblock %}

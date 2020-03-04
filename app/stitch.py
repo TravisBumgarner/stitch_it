@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import imutils
-import matplotlib.pyplot as plt
 from skimage import io 
 
 def kmeans_preview(img):

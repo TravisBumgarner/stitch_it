@@ -6,7 +6,27 @@ from app.stitch import stitch_image
 
 @app.route('/', methods=['GET', 'POST'])
 def stitch():
-    form = StitchForm()
+    form = StitchForm(request.form)
+    print('a')
+    if form.validate_on_submit():
+        print('b')
+        stitched_image = stitch_image(
+            image=form.photo.data,
+            horizontal_samples_user_input=form.horizontal_samples_user_input.data,
+            stitch_size=form.stitch_size.data,
+            stitch_style=form.stitch_style.data,
+            stitch_spacing=form.stitch_spacing.data
+        )
+
+        return render_template(
+            "success.html",
+            results = stitched_image,
+            stitch_size=form.stitch_size.data,
+            stitch_style=form.stitch_style.data,
+            stitch_spacing=form.stitch_spacing.data
+        ) 
+    if (form.errors):
+        flash(form.errors)
     return render_template('stitch.html', title='Stitch', form=form)
 
 

@@ -5,9 +5,9 @@
         <h1>Stitch!</h1>
         <h2>Notes:</h2>
         <ul>
-            <li>Works best with images at least 1000px in length.</li>
+            <li>Works best with images at least 1000px along each side.</li>
         </ul>
-        <form action="/success" method="post" novalidate>
+        <form action="/" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div id="submit_form_elements_wrapper">
                 <div>
@@ -37,6 +37,21 @@
                 </div>
             </div>
             <div>{{ form.submit() }}</div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="errors">
+                <ul>
+                    {% for message in messages %}
+                        {% for _, errors in message.items() %}
+                            {% for error in errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
         </form>
     </div>
 {% endblock %}
