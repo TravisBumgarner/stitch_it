@@ -1,13 +1,14 @@
 import os
 from app import app
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request as flask_request
 from app.forms import StitchForm
 from app.stitch import stitch_image
 from app.gcp_utilities import save_to_bucket
 
 @app.route('/', methods=['GET', 'POST'])
-def stitch():
-    form = StitchForm(request.form)
+def stitch(gcp_request=None): #This function should be split out so it's callable from flask and GCP
+    request = gcp_request if gcp_request else flask_request # this line is gross?
+    form = StitchForm(request.form, meta={'csrf': False})
     if form.validate_on_submit():
         stitched_image = stitch_image(
             image=form.photo.data,

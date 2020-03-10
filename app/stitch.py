@@ -17,7 +17,11 @@ def kmeans_image(img):
 
 
 def stitch_image(image, horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing):
-    img = io.imread(image)
+    img = cv2.imread(image)
+    
+    # if not img:
+    #     return "Hmm. Something went wrong."
+    
     img = imutils.resize(img, width=1000)
     img = imutils.resize(img, height=1000) # imutils will not respect both width and height at same time
     input_width, input_height, _ = img.shape

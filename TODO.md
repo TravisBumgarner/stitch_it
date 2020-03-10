@@ -13,14 +13,16 @@
 - [x] Prune dead code
 - [x] Setup routing to save html pages to bucket
 - [x] Create links you can share
-- [ ] Read Logan's articles
+- [x] Figure out how to handle settings between form and results pages
 - [ ] Make it look like a stitching
 - [ ] Protect against image attacks
 - [ ] Upload to GCP
-- [ ] Figure out how to avoid hug of death
-- [ ] Figure out how to handle settings between form and results pages
 - [ ] Add some links on site (Created by ...)
-- [ ] Handle secret key
+- [ ] Productionalize
+    - [ ] Figure out how to avoid hug of death
+    - [ ] Read Logan's articles
+    - [ ] Handle secret key
+    - [ ] Figure out CSRF
 - [ ] Fix bugs with uploading files from elsewhere
 - [ ] Add error page
 - [ ] ~~Handle grayscale photos~~ (Non issue?)
