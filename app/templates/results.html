@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <style>      
+        #form_elements_wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1em 0;
+        }
+
+        #css_image_wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1em 0;
+        }
+
+        #form_elements_wrapper>div {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 1em;
+        } 
+    </style>
+</head>
+
+<body>
+    <div id="form_elements_wrapper">
+        <div>
+            <p><a href="/">Try again</a></p>
+        </div>
+        <div>
+            <p>Stitch Size</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
+            </div>
+        </div>
+        <div>
+            <p>Stitch Spacing</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
+            </div>
+        </div>
+        <div>
+            <p>Stitch Style</p>
+            <div>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">-</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">+</button>
+            </div>
+        </div>
+        <button onclick="copyToClipboard()">Copy CSS to Clipboard</button>
+    </div>
+    <div id='css_image_wrapper'>
+        <style>
+            :root {
+                --stitch_spacing: {{stitch_spacing}}px;
+                --stitch_style: {{stitch_style}}%;
+                --stitch_size: {{stitch_size}}px;
+            }
+
+            .row {
+                line-height: 0;
+                white-space: nowrap;
+                clear: both;
+            }
+            
+            .cell {
+                margin: var(--stitch_spacing);
+                border-radius: var(--stitch_style);
+                width: var(--stitch_size);
+                float: left;
+                height: var(--stitch_size); 
+            }
+        </style>
+        {{results|safe}}
+    </div>
+</body>
+<script>
+
+    let stitchSize = {{ stitch_size }}
+    let stitchSpacing = {{ stitch_spacing }}
+    let stitchStyle = {{ stitch_style }}
+
+    function updateCSSVar({ cssVar, incrementor }) {
+        const root = document.documentElement
+        let cssVal
+
+        switch (cssVar) {
+            case '--stitch_size':
+                stitchSize += incrementor
+                cssVal = stitchSize + 'px'
+                break
+            case '--stitch_spacing':
+                stitchSpacing += incrementor
+                cssVal = stitchSpacing + 'px'
+                break
+            case '--stitch_style':
+                stitchStyle += incrementor
+                cssVal = stitchStyle + '%'
+                break
+        }
+
+        root.style.setProperty(cssVar, cssVal);
+    }
+
+    function copyToClipboard() {
+        const el = document.createElement('textarea')
+        const wrapper = document.getElementById('css_image_wrapper')
+        el.value = wrapper.innerHTML
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+    };
+
+</script>
+
+</html>

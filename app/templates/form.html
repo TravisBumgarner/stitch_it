@@ -1,7 +1,30 @@
-{% extends "base.html" %}
+<html>
 
-{% block content %}
-    <div class="wrapper">
+<head>
+    <title>Stitch It!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        #form_wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #form_elements_wrapper>div {
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="form_wrapper">
         <h1>Stitch!</h1>
         <h2>Notes:</h2>
         <ul>
@@ -9,7 +32,7 @@
         </ul>
         <form action="/" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div id="submit_form_elements_wrapper">
+            <div id="form_elements_wrapper">
                 <div>
                     {{ form.photo.label }}
                     {{ form.photo }}
@@ -54,4 +77,5 @@
             {% endwith %}
         </form>
     </div>
-{% endblock %}
+</body>
+</html>

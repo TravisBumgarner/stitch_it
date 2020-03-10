@@ -19,7 +19,7 @@ def stitch():
         )
 
         return render_template(
-            "success.html",
+            "results.html",
             results = stitched_image,
             stitch_size=form.stitch_size.data,
             stitch_style=form.stitch_style.data,
@@ -27,7 +27,7 @@ def stitch():
         ) 
     if (form.errors):
         flash(form.errors)
-    return render_template('stitch.html', title='Stitch', form=form)
+    return render_template('form.html', title='Stitch', form=form)
 
 
 @app.route('/success', methods = ['POST'])  
@@ -43,7 +43,7 @@ def success():
     )
 
     return render_template(
-        "success.html",
+        "results.html",
         results = stitched_image,
         stitch_size=form.stitch_size.data,
         stitch_style=form.stitch_style.data,
