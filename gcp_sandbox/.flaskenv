@@ -1,1 +1,0 @@
-FLASK_APP=local_mvp_test.py
