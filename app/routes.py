@@ -3,6 +3,7 @@ from app import app
 from flask import render_template, flash, redirect, request
 from app.forms import StitchForm
 from app.stitch import stitch_image
+from app.gcp_utilities import save_to_bucket
 
 @app.route('/', methods=['GET', 'POST'])
 def stitch():
@@ -16,13 +17,16 @@ def stitch():
             stitch_spacing=form.stitch_spacing.data
         )
 
-        return render_template(
+        rendered_template = render_template(
             "results.html",
             results = stitched_image,
             stitch_size=form.stitch_size.data,
             stitch_style=form.stitch_style.data,
             stitch_spacing=form.stitch_spacing.data
         ) 
+        save_to_bucket(rendered_template)
+
+        return rendered_template
     if (form.errors):
         flash(form.errors)
     return render_template('form.html', title='Stitch', form=form)

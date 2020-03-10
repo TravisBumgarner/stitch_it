@@ -10,15 +10,18 @@
 - [x] Form validation
 - [x] Sort out all the awful CSS
 - [x] Create copy to clipboard function
-- [ ] Prune dead code
+- [x] Prune dead code
+- [x] Setup routing to save html pages to bucket
+- [x] Create links you can share
 - [ ] Read Logan's articles
 - [ ] Make it look like a stitching
-- [ ] Create links you can share
 - [ ] Protect against image attacks
 - [ ] Upload to GCP
+- [ ] Figure out how to avoid hug of death
 - [ ] Figure out how to handle settings between form and results pages
 - [ ] Add some links on site (Created by ...)
 - [ ] Handle secret key
 - [ ] Fix bugs with uploading files from elsewhere
+- [ ] Add error page
 - [ ] ~~Handle grayscale photos~~ (Non issue?)
 - [ ] ~~Fix stitch style buttons not working~~ (Non issue?)
