@@ -16,15 +16,19 @@ def kmeans_image(img):
     return np.uint8(palette[-1])
 
 
-def stitch_image(image, horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing):
-    img = cv2.imread(image)
-    
+def stitch_image(filestr, horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing):
+    npimg = np.fromstring(filestr, np.uint8)
+    img = cv2.imdecode(npimg, cv2.IMREAD_UNCHANGED)
+    print(img.shape)
     # if not img:
     #     return "Hmm. Something went wrong."
     
     img = imutils.resize(img, width=1000)
     img = imutils.resize(img, height=1000) # imutils will not respect both width and height at same time
-    input_width, input_height, _ = img.shape
+    input_width, input_height, *_ = img.shape
+
+    if len(img.shape) > 2 and img.shape[2] == 4:
+        img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
 
     sample_size = round(input_width / horizontal_samples_user_input)
     vertical_samples = round(input_height / sample_size)

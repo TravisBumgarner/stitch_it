@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, FileField, IntegerField, RadioField
+from flask_wtf.file import FileField
+from wtforms import SubmitField, IntegerField, RadioField
 from wtforms.validators import DataRequired, NumberRange
 
 
@@ -41,10 +42,7 @@ class StitchForm(FlaskForm):
         ]
     )
     photo = FileField(
-        'Photo',
-        validators=[
-            DataRequired('The field photo is required')
-        ]
+        'Photo'
     )
     submit = SubmitField(
         'Stitch!'
