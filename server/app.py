@@ -20,7 +20,6 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
-
 def kmeans_image(img):
     pixels = np.float32(img.reshape(-1, 3))
 
@@ -61,7 +60,7 @@ def stitch_image(filestr, horizontal_samples_user_input, stitch_style, stitch_si
             j_start = j*sample_size
             j_end = j*sample_size+sample_size
 
-            r,g,b = kmeans_image(img[i_start:i_end, j_start:j_end])
+            b,g,r = kmeans_image(img[i_start:i_end, j_start:j_end])
             output_html += f'\t\t\t\t<div style="background-color: rgb({r},{g},{b});" class="cell"></div>\n'
         
         output_html += '\t\t\t</div>\n'
