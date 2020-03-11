@@ -35,7 +35,7 @@ def kmeans_image(img):
 
 
 def stitch_image(filestr, horizontal_samples_user_input, stitch_style, stitch_size, stitch_spacing):
-    npimg = np.fromstring(filestr, np.uint8)
+    npimg = np.frombuffer(filestr, np.uint8)
     img = cv2.imdecode(npimg, cv2.IMREAD_UNCHANGED)
     
     img = imutils.resize(img, width=1000)
