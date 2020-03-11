@@ -79,7 +79,7 @@ def save_to_bucket(html_body):
 class StitchForm(FlaskForm):
     horizontal_samples_user_input = IntegerField(
         'Vertical Stitch Count',
-        default=25,
+        default=100,
         validators=[
             DataRequired('The field vertical stitch count is required'),
             NumberRange(1, 1000, "A vertical stitch count between 1 and 1000 is required")
@@ -89,7 +89,8 @@ class StitchForm(FlaskForm):
         'Stitch Size',
         default=10,
         validators=[
-            DataRequired('The field stitch size is required')
+            DataRequired('The field stitch size is required'),
+            NumberRange(1, 1000, "A stitch size between 1 and 1000 is required")
         ]
     )
     stitch_style = RadioField(
@@ -108,9 +109,10 @@ class StitchForm(FlaskForm):
     )
     stitch_spacing = IntegerField(
         'Stitch Spacing',
-        default=2,
+        default=0,
         validators=[
-            DataRequired('The field stitch spacing is required')
+            # Cannot validate = 0, because of some bug in wtforms.
+            NumberRange(-1000, 1000, "A stitch style between -1000 and 1000 is required")
         ]
     )
     photo = FileField(
