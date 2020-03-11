@@ -16,11 +16,8 @@ def allowed_file(filename):
 def stitch(gcp_request=None): #This function should be split out so it's callable from flask and GCP
     request = gcp_request if gcp_request else flask_request # this line is gross?
     form = StitchForm(meta={'csrf': False})
-    if form.is_submitted():
-        print(form.photo.data)
-    if form.validate_on_submit():
-        print(request.files)
 
+    if form.validate_on_submit():
         stitched_image = stitch_image(
             filestr=request.files[form.photo.name].read(),
             horizontal_samples_user_input=form.horizontal_samples_user_input.data,
