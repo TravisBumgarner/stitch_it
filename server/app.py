@@ -12,6 +12,14 @@ import cv2
 import numpy as np
 import imutils
 from skimage import io 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
 
 def kmeans_image(img):
     pixels = np.float32(img.reshape(-1, 3))
@@ -113,9 +121,6 @@ class StitchForm(FlaskForm):
         'Stitch!'
     )
 
-class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    UPLOAD_FOLDER = './'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -126,7 +131,7 @@ def health_check():
 
 @app.route('/', methods=['GET', 'POST'])
 def stitch(): #This function should be split out so it's callable from flask and GCP
-    form = StitchForm(meta={'csrf': False})
+    form = StitchForm()
 
     if form.validate_on_submit():
         stitched_image = stitch_image(
