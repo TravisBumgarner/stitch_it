@@ -39,3 +39,7 @@ a:visited {
     padding: 20px;
     text-transform: uppercase;
 }
+
+#contact_me a {
+    margin-left: 10px;
+}

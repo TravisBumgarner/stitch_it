@@ -14,15 +14,15 @@
 - [x] Setup routing to save html pages to bucket
 - [x] Create links you can share
 - [x] Figure out how to handle settings between form and results pages
-- [ ] Protect against image attacks
-- [ ] Upload to GCP
+- [x] Protect against image attacks
+- [x] Upload to GCP
 - [ ] Why are PNG photos blue
 - [x] Add some links on site (Created by ...)
 - [ ] Productionalize
     - [ ] Figure out how to avoid hug of death
-    - [ ] Read Logan's articles
-    - [ ] Handle secret key
-    - [ ] Figure out CSRF
+    - [x] Read Logan's articles
+    - [x] Handle secret key
+    - [x] Figure out CSRF
 - [x] Fix bugs with uploading files from elsewhere
 - [ ] ~~Add error page~~
 - [ ] ~~Make it look like a stitching~~
