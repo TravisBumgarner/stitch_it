@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <style>      
-        #form_elements_wrapper {
+        #form_elements_wrapper, #save_button_wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -20,32 +20,41 @@
         }
 
         #form_elements_wrapper>div {
-            width: 200px;
+            width: 300px;
             display: flex;
-            justify-content: space-between;
             margin: 0 1em;
         } 
+        #form_elements_wrapper>div>p {
+            margin: 0 10px 0 0;
+
+        }
     </style>
 </head>
 
 <body>
-    <div id="contact_me">
-        <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
-        <a target="_blank" href="https://travisbumgarner.com">Get in touch!</a>
+    <div id="header">
+        <div>
+            <a href="/">Try again</a>
+        </div>
+        <div>
+            <h1>Stitch It!</h1>
+        </div>
+        <div>
+            <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
+            <a target="_blank" href="https://twitter.com/travis_the_makr">Twitter</a>
+            <a target="_blank" href="https://travisbumgarner.com">Portfolio</a>
+        </div>
     </div>
     <div id="form_elements_wrapper">
         <div>
-            <p><a href="/">Try again</a></p>
-        </div>
-        <div>
-            <p>Stitch Size</p>
+            <p>Stitch Diameter</p>
             <div>
                 <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
                 <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
             </div>
         </div>
         <div>
-            <p>Stitch Spacing</p>
+            <p>Space Between Stitches</p>
             <div>
                 <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
                 <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
@@ -54,10 +63,12 @@
         <div>
             <p>Stitch Style</p>
             <div>
-                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">-</button>
-                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">+</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">More Square</button>
+                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">More Round</button>
             </div>
         </div>
+    </div>
+    <div id="save_button_wrapper">
         <button onclick="copyToClipboard()">Copy CSS to Clipboard</button>
     </div>
     <div id='css_image_wrapper'>

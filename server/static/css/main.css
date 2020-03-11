@@ -5,17 +5,25 @@ body {
 
 h1 {
     font-size: 2em;
-    margin-bottom: 1em;
 }
 
 h2 {
     font-size: 1.5em;
-    margin-bottom: 0.5em;
+    margin: 1em 0 0.5em 0;
+}
+
+p {
+    margin: 0.5em 0;
+    line-height: 1.25;
 }
 
 a {
     text-decoration: none;
 } 
+
+a:hover {
+    text-decoration: underline;
+}
 
 a:visited {
     color: black;
@@ -24,7 +32,7 @@ a:visited {
 
 .errors {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     background-color: red;
@@ -32,14 +40,32 @@ a:visited {
     padding: 1em;
 }
 
-#contact_me {
-    position: absolute;
-    top: 0;
-    right: 0;
+#header {
     padding: 20px;
     text-transform: uppercase;
+    background-color: rgb(74, 207, 160);
+    margin-bottom: 50px;
+    color: white;
 }
 
-#contact_me a {
-    margin-left: 10px;
+#header > div {
+    width: 33%;
+    display: inline-block;
+}
+
+#header > div:nth-child(2) {
+    text-align: center;
+}
+
+#header > div:nth-child(3) {
+    text-align: right;
+}
+
+#header a {
+    margin-left: 30px;
+    color: white;
+}
+
+#header a:visited {
+    color: white;
 }

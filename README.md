@@ -1,12 +1,18 @@
-# Setup
+# Setup locally
 
 1) Copy `.env.example` to `.env`
+2) Run `pip install -r requirements.txt`
 2) Generate `SECRET_KEY` for `.env` with `import os; os.urandom(24)`
-3) Run `gcloud builds submit --tag gcr.io/stitch-it-311a5/stitchit`
-4. Run `gcloud beta run deploy --image gcr.io/stitch-it-311a5/stitchit`
+3) Run`cd server && python app.py`
+
+# Deploy
+
+1) Run `gcloud builds submit --tag gcr.io/stitch-it-311a5/stitchit`
+2) Run `gcloud beta run deploy --image gcr.io/stitch-it-311a5/stitchit --platform=managed --region=us-east1`
 
 # To Do
 
+- [ ] Make mobile friendly
 - [x] Build flask server
 - [x] Setup HTML Templates
 - [x] Create form
@@ -29,19 +35,27 @@
 - [x] Improve quality / granularity of output css
 - [x] Add some links on site (Created by ...)
 - [x] Fix bug with 0 not being allowed in forms
-- [ ] Productionalize
-- [ ] Clean up repo
+- [x] Clean up repo
+- [x] Setup Favicon
+- [x] Make css better
+- [x] Productionalize
+    - [x] Setup domain name
     - [ ] Figure out how to avoid hug of death
     - [x] Read Logan's articles
     - [x] Handle secret key
     - [x] Figure out CSRF
 - [x] Fix bugs with uploading files from elsewhere
 - [ ] ~~Add error page~~
+- [ ] ~~Don't let buttons on results go past 0 or 100~~
 - [ ] ~~Make it look like a stitching~~
 - [x] ~~Handle grayscale photos~~ (Non issue?)
 - [ ] ~~Fix stitch style buttons not working~~ (Non issue?)
 
 # Research Resources
+
+## Cloud Run Mapping Custom Domains
+
+https://cloud.google.com/run/docs/mapping-custom-domains
 
 ## Flask
 

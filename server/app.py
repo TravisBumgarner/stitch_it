@@ -69,24 +69,24 @@ def stitch_image(filestr, horizontal_samples_user_input, stitch_style, stitch_si
     return output_html
 
 
-def save_to_bucket(html_body):
-    client = storage.Client()
-    bucket = client.get_bucket("test_stitching")
-    blob = storage.Blob(f'{uuid.uuid4().hex}.html', bucket)
-    blob.upload_from_string(html_body, "text/html")
+# def save_to_bucket(html_body):
+#     client = storage.Client()
+#     bucket = client.get_bucket("test_stitching")
+#     blob = storage.Blob(f'{uuid.uuid4().hex}.html', bucket)
+#     blob.upload_from_string(html_body, "text/html")
 
 
 class StitchForm(FlaskForm):
     horizontal_samples_user_input = IntegerField(
-        'Vertical Stitch Count',
+        'Stitch Count Along Vertical Side',
         default=100,
         validators=[
-            DataRequired('The field vertical stitch count is required'),
+            DataRequired('Stitch Count Along Vertical Side is required'),
             NumberRange(1, 1000, "A vertical stitch count between 1 and 1000 is required")
         ]
     )
     stitch_size = IntegerField(
-        'Stitch Size',
+        'Stitch Diameter',
         default=10,
         validators=[
             DataRequired('The field stitch size is required'),
@@ -108,7 +108,7 @@ class StitchForm(FlaskForm):
         ]
     )
     stitch_spacing = IntegerField(
-        'Stitch Spacing',
+        'Spacing Between Stitches',
         default=0,
         validators=[
             # Cannot validate = 0, because of some bug in wtforms.
@@ -116,7 +116,10 @@ class StitchForm(FlaskForm):
         ]
     )
     photo = FileField(
-        'Photo'
+        'Photo',
+        validators=[
+            DataRequired("A photo is required")
+        ]
     )
     submit = SubmitField(
         'Stitch!'
@@ -150,7 +153,10 @@ def stitch(): #This function should be split out so it's callable from flask and
             stitch_style=form.stitch_style.data,
             stitch_spacing=form.stitch_spacing.data
         ) 
-        # save_to_bucket(rendered_template)
+        # try:
+        #     save_to_bucket(rendered_template)
+        # except:
+        #     pass
 
         return rendered_template
     if (form.errors):
