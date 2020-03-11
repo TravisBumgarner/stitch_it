@@ -6,8 +6,8 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 # 3
-COPY /app /app
-WORKDIR /app
+COPY /server /server
+WORKDIR /server
 
 # 4
 ENV PORT 8080
