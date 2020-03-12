@@ -21,8 +21,8 @@
 - [ ] Figure out how to avoid hug of death
 - [x] Anayltics
 - [ ] Make mobile friendly
-- [ ] Figure out site logo
-- [ ] Add CSS blocks as BG on form page
+- [x] Figure out site logo
+- [x] Add CSS blocks as BG on form page
 - [x] Build flask server
 - [x] Setup HTML Templates
 - [x] Create form
