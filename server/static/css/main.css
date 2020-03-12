@@ -1,7 +1,14 @@
 body {
     font-family: 'Montserrat';
-    font-size: 16px;
+    font-size: 20px;
 }
+
+@media screen and (max-width: 992px) {
+    body {
+        font-size: 16px;
+    }
+}
+
 
 h1 {
     font-size: 2em;
@@ -15,6 +22,7 @@ h2 {
 p {
     margin: 0.5em 0;
     line-height: 1.25;
+    font-size: 1em;
 }
 
 a {
@@ -46,19 +54,28 @@ a:visited {
     background-color: rgb(74, 207, 160);
     margin-bottom: 50px;
     color: white;
+    display: flex;
 }
 
 #header > div {
-    width: 33%;
     display: inline-block;
+}
+
+#header > div:nth-child(1) {
+    text-align: left;
+    width: 40%;
 }
 
 #header > div:nth-child(2) {
     text-align: center;
+    width: 20%;
 }
 
 #header > div:nth-child(3) {
-    text-align: right;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #header a {
