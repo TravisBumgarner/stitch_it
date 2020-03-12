@@ -19,7 +19,7 @@
     - [ ] Reddit
     - [ ] Newsletters
 - [ ] Figure out how to avoid hug of death
-- [ ] Anayltics
+- [x] Anayltics
 - [ ] Make mobile friendly
 - [ ] Figure out site logo
 - [ ] Add CSS blocks as BG on form page

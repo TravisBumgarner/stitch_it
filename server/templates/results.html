@@ -74,18 +74,23 @@
                 --stitch_size: {{stitch_size}}px;
             }
 
+            #image {
+                width: 100%;
+            }
+
             .row {
                 line-height: 0;
                 white-space: nowrap;
-                clear: both;
+                overflow: scroll;
+                font-size: 0;
             }
             
             .cell {
                 margin: var(--stitch_spacing);
                 border-radius: var(--stitch_style);
                 width: var(--stitch_size);
-                float: left;
                 height: var(--stitch_size); 
+                display: inline-block;
             }
         </style>
         {{results|safe}}

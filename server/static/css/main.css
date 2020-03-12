@@ -58,9 +58,7 @@ a:visited {
 #header {
     padding: 20px;
     text-transform: uppercase;
-    background-color: rgb(74, 207, 160);
     margin-bottom: 50px;
-    color: white;
     display: flex;
 }
 
@@ -91,5 +89,5 @@ a:visited {
 }
 
 #header a, #header a:visited {
-    color: white;
+    color: black;
 }

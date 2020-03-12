@@ -18,6 +18,3 @@ node_modules
 
 __pycache__/
 .DS_Store
-*.jpg
-*.png
-*.jpeg
