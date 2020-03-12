@@ -1,12 +1,5 @@
-<html>
-
-<head>
-    <title>Stitch It!</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <link rel="icon"  type="image/png"  href="{{ url_for('static', filename='favicon/favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+{% extends 'base.html' %}
+{% block styling %}
     <style>      
         #form_elements_wrapper, #save_button_wrapper {
             display: flex;
@@ -32,9 +25,8 @@
 
         }
     </style>
-</head>
-
-<body>
+{% endblock %}
+{% block content %}
     <div id="header">
         <div>
             <a href="/">Try again</a>
@@ -98,9 +90,7 @@
         </style>
         {{results|safe}}
     </div>
-</body>
 <script>
-
     let stitchSize = {{ stitch_size }}
     let stitchSpacing = {{ stitch_spacing }}
     let stitchStyle = {{ stitch_style }}
@@ -139,4 +129,4 @@
 
 </script>
 
-</html>
+{% endblock %}

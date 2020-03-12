@@ -69,8 +69,9 @@ a:visited {
 }
 
 #header > div:nth-child(1) {
-    text-align: left;
     width: 40%;
+    display: flex;
+    align-items: center;
 }
 
 #header > div:nth-child(2) {
@@ -85,11 +86,10 @@ a:visited {
     justify-content: flex-end;
 }
 
-#header a {
-    margin-left: 30px;
-    color: white;
+#header > div:nth-child(3) > a {
+    margin-left: 1.5rem;
 }
 
-#header a:visited {
+#header a, #header a:visited {
     color: white;
 }
