@@ -12,7 +12,17 @@
 
 # To Do
 
+- [ ] Share to the world
+    - [ ] Blog post?
+    - [ ] IG
+    - [ ] Twitter
+    - [ ] Reddit
+    - [ ] Newsletters
+- [ ] Figure out how to avoid hug of death
+- [ ] Anayltics
 - [ ] Make mobile friendly
+- [ ] Figure out site logo
+- [ ] Add CSS blocks as BG on form page
 - [x] Build flask server
 - [x] Setup HTML Templates
 - [x] Create form
@@ -38,12 +48,10 @@
 - [x] Clean up repo
 - [x] Setup Favicon
 - [x] Make css better
-- [x] Productionalize
-    - [x] Setup domain name
-    - [ ] Figure out how to avoid hug of death
-    - [x] Read Logan's articles
-    - [x] Handle secret key
-    - [x] Figure out CSRF
+- [x] Setup domain name
+- [x] Read Logan's articles
+- [x] Handle secret key
+- [x] Figure out CSRF
 - [x] Fix bugs with uploading files from elsewhere
 - [ ] ~~Add error page~~
 - [ ] ~~Don't let buttons on results go past 0 or 100~~

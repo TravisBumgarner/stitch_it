@@ -17,11 +17,18 @@
         }
 
         #form_wrapper {
-            max-width: 400px;
+            width: 40vw;
+            max-width: 1200px;
+        }
+
+
+        @media screen and (max-width: 992px) {
+            #form_wrapper {
+                width: 80vw;
+            }
         }
 
         #form_elements_wrapper>div {
-            width: 400px;
             display: flex;
             justify-content: space-between;
             margin: 1em 0;
