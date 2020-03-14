@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block styling %}
-    <style>      
+    <style>
+        :root {
+            --stitch_spacing: {{stitch_spacing}}px;
+            --stitch_style: {{stitch_style}}%;
+            --stitch_size: {{stitch_size}}px;
+        }
+
         #form_elements_wrapper, #save_button_wrapper {
             display: flex;
             align-items: center;
@@ -68,12 +74,6 @@
     </div>
     <div id='css_image_wrapper'>
         <style>
-            :root {
-                --stitch_spacing: {{stitch_spacing}}px;
-                --stitch_style: {{stitch_style}}%;
-                --stitch_size: {{stitch_size}}px;
-            }
-
             #image {
                 width: 100%;
             }
@@ -123,9 +123,18 @@
     }
 
     function copyToClipboard() {
+        const rootStyle = `
+        <style>
+            :root {
+                    --stitch_spacing: ${stitchSpacing}px;
+                    --stitch_style: ${stitchStyle}%;
+                    --stitch_size: ${stitchSize}px;
+                }
+        </style>
+        `
         const el = document.createElement('textarea')
         const wrapper = document.getElementById('css_image_wrapper')
-        el.value = wrapper.innerHTML
+        el.value = '<div>' + rootStyle + wrapper.innerHTML + '</div>'
         document.body.appendChild(el)
         el.select()
         document.execCommand('copy')

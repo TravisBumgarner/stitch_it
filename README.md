@@ -13,12 +13,15 @@
 # To Do
 
 - [ ] Share to the world
-    - [ ] Blog post?
+    - [ ] Blog post
     - [ ] IG
     - [ ] Twitter
     - [ ] Reddit
     - [ ] Newsletters
-- [ ] Figure out how to avoid hug of death
+- ~~[ ] Add loading indicator~~
+- [ ] Add link to blog post
+- [x] Fix Copy to Clipboard
+- [x] Figure out how to avoid hug of death
 - [x] Anayltics
 - [ ] Make mobile friendly
 - [x] Figure out site logo
@@ -79,7 +82,7 @@ https://www.javatpoint.com/flask-file-uploading
 https://riptutorial.com/flask/example/19418/save-uploads-on-the-server
 
 ## Finding Interesting Colors
-
+w
 https://stackoverflow.com/questions/43111029/how-to-find-the-average-colour-of-an-image-in-python-with-opencv
 
 ## WTForms

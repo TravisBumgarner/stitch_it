@@ -1,6 +1,15 @@
 <html>
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ59RHFM7D"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XJ59RHFM7D');
+    </script>
     <title>Stitch It!</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
@@ -12,29 +21,6 @@
 
 <body>
     {% block content %}{% endblock %}
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCBH4R5emKmZpNQuItlz_7wMPBjJfhgvRc",
-            authDomain: "stitch-it-311a5.firebaseapp.com",
-            databaseURL: "https://stitch-it-311a5.firebaseio.com",
-            projectId: "stitch-it-311a5",
-            storageBucket: "stitch-it-311a5.appspot.com",
-            messagingSenderId: "637151084809",
-            appId: "1:637151084809:web:0320b66ce14a6cd8fa53d8",
-            measurementId: "G-WD2V5XBWPP"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
 </body>
 
 </html>
