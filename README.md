@@ -23,7 +23,7 @@
 - [x] Fix Copy to Clipboard
 - [x] Figure out how to avoid hug of death
 - [x] Anayltics
-- [ ] Make mobile friendly
+- [s] Make mobile friendly
 - [x] Figure out site logo
 - [x] Add CSS blocks as BG on form page
 - [x] Build flask server

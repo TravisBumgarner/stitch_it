@@ -1,100 +1,109 @@
 {% extends 'base.html' %}
 {% block styling %}
-    <style>
-        :root {
+<style>
+    :root {
             --stitch_spacing: {{stitch_spacing}}px;
             --stitch_style: {{stitch_style}}%;
             --stitch_size: {{stitch_size}}px;
         }
 
-        #form_elements_wrapper, #save_button_wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1em 0;
-        }
+    #form_elements_wrapper,
+    #save_button_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1em 0;
+    }
 
-        #css_image_wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1em 0;
-        }
+    #css_image_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1em 0;
+    }
 
-        #form_elements_wrapper>div {
-            width: 300px;
-            display: flex;
-            margin: 0 1em;
+    #form_elements_wrapper>div {
+        width: 300px;
+        display: flex;
+        margin: 0 1em;
+    }
         } 
-        #form_elements_wrapper>div>p {
-            margin: 0 10px 0 0;
+    }
 
-        }
-    </style>
+    #form_elements_wrapper>div>p {
+        margin: 0 10px 0 0;
+
+    }
+</style>
 {% endblock %}
 {% block content %}
-    <div id="header">
-        <div>
-            <a href="/">Try again</a>
-        </div>
-        <div>
-            <h1>Stitch It!</h1>
-        </div>
-        <div>
-            <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
-            <a target="_blank" href="https://twitter.com/travis_the_makr">Twitter</a>
-            <a target="_blank" href="https://travisbumgarner.com">Portfolio</a>
-        </div>
-    </div>
-    <div id="form_elements_wrapper">
-        <div>
-            <p>Stitch Diameter</p>
-            <div>
-                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
-                <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
-            </div>
-        </div>
-        <div>
-            <p>Space Between Stitches</p>
-            <div>
-                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
-                <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
-            </div>
-        </div>
-        <div>
-            <p>Stitch Style</p>
-            <div>
-                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">More Square</button>
-                <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">More Round</button>
-            </div>
-        </div>
-    </div>
-    <div id="save_button_wrapper">
-        <button onclick="copyToClipboard()">Copy CSS to Clipboard</button>
-    </div>
-    <div id='css_image_wrapper'>
-        <style>
-            #image {
-                width: 100%;
-            }
 
-            .row {
-                line-height: 0;
-                white-space: nowrap;
-                overflow: scroll;
-                font-size: 0;
-            }
-            
-            .cell {
-                margin: var(--stitch_spacing);
-                border-radius: var(--stitch_style);
-                width: var(--stitch_size);
-                height: var(--stitch_size); 
-                display: inline-block;
-            }
-        </style>
-        {{results|safe}}
+<div id="try_again">
+    <a href="/">Try again</a>
+</div>
+<div id="header">
+    <div>
+        <h1>Stitch It!</h1>
     </div>
+    <nav>
+        <a target="_blank" href="https://blog.travisbumgarner.com/post/how-to-make-a-photo-stitching-website/">How It
+            Works</a>
+        <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
+        <a target="_blank" href="https://twitter.com/travis_the_makr">Twitter</a>
+        <a target="_blank" href="https://travisbumgarner.com">Portfolio</a>
+    </nav>
+</div>
+<div id="form_elements_wrapper">
+    <div>
+        <p>Stitch Diameter</p>
+        <div>
+            <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
+            <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
+        </div>
+    </div>
+    <div>
+        <p>Space Between Stitches</p>
+        <div>
+            <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
+            <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
+        </div>
+    </div>
+    <div>
+        <p>Stitch Style</p>
+        <div>
+            <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">More Square</button>
+            <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">More Round</button>
+        </div>
+    </div>
+</div>
+<div id="save_button_wrapper">
+    <button onclick="copyToClipboard()">Copy CSS to Clipboard</button>
+</div>
+<div id='css_image_wrapper'>
+    <style>
+        #image {
+            width: 100%;
+        }
+
+        .row {
+            line-height: 0;
+            white-space: nowrap;
+            overflow: scroll;
+            font-size: 0;
+        }
+
+        .cell {
+            margin: var(--stitch_spacing);
+            border-radius: var(--stitch_style);
+            width: var(--stitch_size);
+            height: var(--stitch_size);
+                height: var(--stitch_size); 
+            height: var(--stitch_size);
+            display: inline-block;
+        }
+    </style>
+    {{results|safe}}
+</div>
 <script>
     let stitchSize = {{ stitch_size }}
     let stitchSpacing = {{ stitch_spacing }}

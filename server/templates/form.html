@@ -1,69 +1,72 @@
 {% extends 'base.html' %}
 {% block styling %}
-    <style>
-        #content_wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 100vw;
-        }
+<style>
+    #content_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100vw;
+    }
 
+    #form_wrapper {
+        width: 40vw;
+        max-width: 1200px;
+    }
+
+
+    @media screen and (max-width: 992px) {
         #form_wrapper {
-            width: 40vw;
-            max-width: 1200px;
+            width: 80vw;
         }
+    }
 
+    #form_elements_wrapper>div {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em 0;
+    }
 
-        @media screen and (max-width: 992px) {
-            #form_wrapper {
-                width: 80vw;
-            }
-        }
-
-        #form_elements_wrapper>div {
-            display: flex;
-            justify-content: space-between;
-            margin: 1em 0;
-        }
-        #submit {
-            width: 100%;
-        }
-    </style>
+    #submit {
+        width: 100%;
+    }
+</style>
 {% endblock %}
 {% block content %}
-    <div id="header">
-        <div></div>
-        <div>
-            <h1>Stitch It!</h1></div>
-        <div>
-            <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
-            <a target="_blank" href="https://twitter.com/travis_the_makr">Twitter</a>
-            <a target="_blank" href="https://travisbumgarner.com">Portfolio</a>
-        </div>
+<div id="header">
+    <div>
+        <h1>Stitch It!</h1>
     </div>
-    <div id="content_wrapper">
-        <div id="form_wrapper">
-            <h2>Greetings</h2>
-            <p>This is a fun little tool that will convert a photo you upload into a CSS cross stitch.</p>
-            <p>If you encounter any issues or have a feature request, please let me know via GitHub or Twitter.</p>
-            <h2>Notes</h2>
-            <ul>
-                <li>Works best with images at least 1000px along each side.</li>
-            </ul>
-            <h2>Get Stitching</h2>
-            <form method="post" enctype="multipart/form-data">
-                {{ form.hidden_tag() }}
-                <div id="form_elements_wrapper">
-                    <div>
-                        {{ form.photo.label }}
-                        {{ form.photo }}
-                    </div>
-                    <div>
-                        {{ form.horizontal_samples_user_input.label }}
-                        {{ form.horizontal_samples_user_input }}
-                    </div>
-                    <!-- <div>
+    <nav>
+        <a target="_blank" href="https://blog.travisbumgarner.com/post/how-to-make-a-photo-stitching-website/">How It
+            Works</a>
+        <a target="_blank" href="https://github.com/TravisBumgarner/stitch_it">GitHub</a>
+        <a target="_blank" href="https://twitter.com/travis_the_makr">Twitter</a>
+        <a target="_blank" href="https://travisbumgarner.com">Portfolio</a>
+    </nav>
+</div>
+<div id="content_wrapper">
+    <div id="form_wrapper">
+        <h2>Greetings</h2>
+        <p>This is a fun little tool that will convert a photo you upload into a CSS cross stitch.</p>
+        <p>If you encounter any issues or have a feature request, please let me know via GitHub or Twitter.</p>
+        <h2>Notes</h2>
+        <ul>
+            <li>Works best with images at least 1000px along each side.</li>
+        </ul>
+        <h2>Get Stitching</h2>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div id="form_elements_wrapper">
+                <div>
+                    {{ form.photo.label }}
+                    {{ form.photo }}
+                </div>
+                <div>
+                    {{ form.horizontal_samples_user_input.label }}
+                    {{ form.horizontal_samples_user_input }}
+                </div>
+                <!-- <div>
                         {{ form.stitch_size.label }}
                         {{ form.stitch_size }}
                     </div>
@@ -80,63 +83,65 @@
                             {% endfor %}
                         </ul>
                     </div> -->
-                </div>
-                <div>{{ form.submit() }}</div>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <div class="errors">
-                    <ul>
-                        {% for message in messages %}
-                            {% for _, errors in message.items() %}
-                                {% for error in errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-                {% endwith %}
-            </form>
-        </div>
+            </div>
+            <div>{{ form.submit() }}</div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="errors">
+                <ul>
+                    {% for message in messages %}
+                    {% for _, errors in message.items() %}
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+        </form>
     </div>
+</div>
 
-    <style>
-        #wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.2;
-        }
-        :root {
-            --stitch_spacing: 0px;
-            --stitch_style: 25%;
-            --stitch_size: 25px;
-        }
+<style>
+    #wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.2;
+    }
 
-        .row {
-            line-height: 0;
-            white-space: nowrap;
-            clear: both;
-            overflow: auto;
-            width: 300%;
-        }
+    :root {
+        --stitch_spacing: 0px;
+        --stitch_style: 25%;
+        --stitch_size: 25px;
+    }
 
-        #image {
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .cell {
-            margin: var(--stitch_spacing);
-            border-radius: var(--stitch_style);
-            width: var(--stitch_size);
-            float: left;
-            height: var(--stitch_size); 
-        }
-    </style>
-        <div id="wrapper"><div id="image">
+    .row {
+        line-height: 0;
+        white-space: nowrap;
+        clear: both;
+        overflow: auto;
+        width: 300%;
+    }
+
+    #image {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .cell {
+        margin: var(--stitch_spacing);
+        border-radius: var(--stitch_style);
+        width: var(--stitch_size);
+        float: left;
+        height: var(--stitch_size);
+    }
+</style>
+<div id="wrapper">
+    <div id="image">
         <div class="row">
             <div style="background-color: rgb(255,255,255);" class="cell"></div>
             <div style="background-color: rgb(255,255,255);" class="cell"></div>
@@ -1377,7 +1382,8 @@
             <div style="background-color: rgb(255,255,255);" class="cell"></div>
             <div style="background-color: rgb(255,255,255);" class="cell"></div>
         </div>
-    </div></div>
+    </div>
+</div>
 
 
 {% endblock %}

@@ -34,7 +34,7 @@ input {
 
 a {
     text-decoration: none;
-} 
+}
 
 a:hover {
     text-decoration: underline;
@@ -58,36 +58,24 @@ a:visited {
 #header {
     padding: 20px;
     text-transform: uppercase;
-    margin-bottom: 50px;
-    display: flex;
-}
-
-#header > div {
-    display: inline-block;
-}
-
-#header > div:nth-child(1) {
-    width: 40%;
-    display: flex;
-    align-items: center;
-}
-
-#header > div:nth-child(2) {
     text-align: center;
-    width: 20%;
+    /* display: flex; */
 }
 
-#header > div:nth-child(3) {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-#header > div:nth-child(3) > a {
-    margin-left: 1.5rem;
+#header>div:nth-child(1) {
+    margin-bottom: 1em;
 }
 
 #header a, #header a:visited {
     color: black;
+}
+
+nav>a {
+    margin: 0 1em;
+}
+
+#try_again {
+    position: absolute;
+    left: 1em;
+    top: 1em;
 }
