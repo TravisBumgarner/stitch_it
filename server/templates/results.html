@@ -27,7 +27,9 @@
         display: flex;
         margin: 0 1em;
     }
-        } 
+
+    .button-wrapper {
+        line-height: 0;
     }
 
     #form_elements_wrapper>div>p {
@@ -56,21 +58,21 @@
 <div id="form_elements_wrapper">
     <div>
         <p>Stitch Diameter</p>
-        <div>
+        <div class="button-wrapper">
             <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: -1})">-</button>
             <button onclick="updateCSSVar({cssVar: '--stitch_size', incrementor: 1})">+</button>
         </div>
     </div>
     <div>
         <p>Space Between Stitches</p>
-        <div>
+        <div class="button-wrapper">
             <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: -1})">-</button>
             <button onclick="updateCSSVar({cssVar: '--stitch_spacing', incrementor: 1})">+</button>
         </div>
     </div>
     <div>
         <p>Stitch Style</p>
-        <div>
+        <div class="button-wrapper">
             <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: -5})">More Square</button>
             <button onclick="updateCSSVar({cssVar: '--stitch_style', incrementor: 5})">More Round</button>
         </div>
